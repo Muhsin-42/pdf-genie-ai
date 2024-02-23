@@ -36,7 +36,7 @@ const useAsk = ({ clientSessinId }: { clientSessinId: string }) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post(
+      const { data } = await axios.post(
         `/conversation/${clientSessinId}`,
         { prompt },
         {
@@ -45,7 +45,7 @@ const useAsk = ({ clientSessinId }: { clientSessinId: string }) => {
           },
         }
       );
-      setConversation(res.data.conversationHistory);
+      setConversation(data?.data?.conversationHistory);
       setLoading(false);
       setPrompt("");
     } catch (error) {
