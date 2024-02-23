@@ -2,32 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .btn-primary {
+    @apply flex items-center justify-center gap-2 rounded-full bg-gray-900 px-7 py-3 text-white transition hover:scale-105 hover:bg-gray-950 focus:scale-105 active:scale-105 
+          disabled:bg-opacity-65 disabled:scale-100;
+  }
+  .btn-secondary {
+    @apply flex items-center gap-2 rounded-full bg-white px-7 py-3 transition hover:scale-105 hover:bg-gray-100 focus:scale-105 active:scale-105 border border-black/10 dark:bg-white/10 dark:text-white/60;
+  }
+  .loader-primary {
+    @apply size-5 animate-spin rounded-full border-b-2 border-white;
+  }
+  .border-black-10 {
+    @apply border border-black/10;
+  }
+  .border-black-5 {
+    @apply border border-black/10;
+  }
+  .system-msg {
+    @apply mx-3 mt-3 mr-20 w-fit rounded-3xl rounded-tl-none bg-white px-5 py-2 self-start;
+  }
+  .user-msg {
+    @apply mx-3 mt-3 ml-20 w-fit  self-end rounded-3xl rounded-tr-none bg-white px-5 py-2 shadow-xl;
+  }
+  .loader-primary {
+    @apply size-5 animate-spin rounded-full border-b-2 border-white;
   }
 }

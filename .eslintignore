@@ -1,0 +1,14 @@
+node_modules
+./node_modules
+public
+.next
+.gitignore
+next-env.d.ts
+next.config.mjs
+package.json
+package-lock.json
+pnpm-lock.yaml
+postcss.config.js
+README.md
+tailwind.config.ts
+tsconfig.json
