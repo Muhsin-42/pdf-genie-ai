@@ -30,10 +30,10 @@ const UploadForm = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("sessionId", data.sessionId);
-      localStorage.setItem("pdfUrl", data.pdfUrl);
-      router.push(`/chat/${data.sessionId}`);
+      localStorage.setItem("token", data?.data?.token);
+      localStorage.setItem("sessionId", data?.data?.sessionId);
+      localStorage.setItem("pdfUrl", data?.data?.pdfUrl);
+      router.push(`/chat/${data?.data?.sessionId}`);
       toast.success("File uploaded successfully!");
       setLoading(false);
     } catch (error) {

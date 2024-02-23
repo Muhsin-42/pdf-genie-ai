@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 function PdfView({ clientSessinId }: { clientSessinId: string }) {
   const [pdfUrl, setPdfUrl] = useState("");
   const router = useRouter();
+  console.log("clientSiesss ", clientSessinId);
   const getPdfUrl = async () => {
     try {
       const { data } = await axios.get(`/pdf/${clientSessinId}`, {
@@ -24,8 +25,13 @@ function PdfView({ clientSessinId }: { clientSessinId: string }) {
   }, []);
 
   return (
-    <section className="w-6/12">
-      <iframe className="h-screen w-full" allowFullScreen src={pdfUrl} />
+    <section className="hidden w-6/12 sm:block">
+      <iframe
+        allowFullScreen
+        src={`${pdfUrl}`}
+        className="h-screen w-full"
+        loading="lazy"
+      ></iframe>
     </section>
   );
 }
