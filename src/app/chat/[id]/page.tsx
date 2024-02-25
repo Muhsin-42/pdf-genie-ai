@@ -1,5 +1,5 @@
 import AskGpt from "@/components/AskSection/ask-gpt";
-import PdfView from "@/components/ui/pdf-view";
+import PdfView from "@/components/pdf-view";
 import React from "react";
 
 const page = ({ params }: { params: { id: string } }) => {
