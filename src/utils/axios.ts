@@ -3,5 +3,4 @@ import { BASE_URL } from "./constants";
 
 export default axios.create({
   baseURL: BASE_URL,
-  // baseURL: "https://muhsin-a-nissar.tech/",
 });

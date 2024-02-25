@@ -12,3 +12,4 @@ postcss.config.js
 README.md
 tailwind.config.ts
 tsconfig.json
+typings.d.ts
