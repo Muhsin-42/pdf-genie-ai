@@ -2,18 +2,20 @@
 import axios from "@/utils/axios";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { FileUploader } from "react-drag-drop-files";
+// import { FileUploader } from "react-drag-drop-files";
 import { toast } from "sonner";
+import DropZoneComp from "./DropZoneComp";
 
-const fileTypes = ["PDF"];
+// const fileTypes = ["PDF"];
 
 const UploadForm = () => {
   const router = useRouter();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
-  const handleFileChange = (file: any) => {
-    setSelectedFile(file);
-  };
+  // const handleFileChange = (file: any) => {
+  //   setSelectedFile(file);
+  //   console.log("fileee", file);
+  // };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -32,7 +34,6 @@ const UploadForm = () => {
       });
       localStorage.setItem("token", data?.data?.token);
       localStorage.setItem("sessionId", data?.data?.sessionId);
-      localStorage.setItem("pdfUrl", data?.data?.pdfUrl);
       router.push(`/chat/${data?.data?.sessionId}`);
       toast.success("File uploaded successfully!");
       setLoading(false);
@@ -47,7 +48,8 @@ const UploadForm = () => {
     <section className="mt-28">
       <div className=" !z-50 m-auto w-5/12 rounded-2xl bg-white/10 p-10 py-16 shadow-2xl">
         <h2 className="mb-4 text-center text-2xl font-bold">PdfGenie</h2>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-3 space-y-4">
+        <DropZoneComp></DropZoneComp>
+        {/* <form onSubmit={handleSubmit} className="flex flex-col gap-3 space-y-4">
           <FileUploader
             handleChange={handleFileChange}
             name="pdf"
@@ -63,7 +65,7 @@ const UploadForm = () => {
             Upload
             {loading && <span className="loader-primary"></span>}
           </button>
-        </form>
+        </form> */}
       </div>
     </section>
   );
