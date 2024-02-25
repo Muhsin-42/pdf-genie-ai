@@ -11,6 +11,9 @@ dependencies:
   '@react-pdf/renderer':
     specifier: ^3.3.8
     version: 3.3.8(react@18.2.0)
+  '@vercel/analytics':
+    specifier: ^1.2.2
+    version: 1.2.2(next@14.1.0)(react@18.2.0)
   axios:
     specifier: ^1.6.7
     version: 1.6.7
@@ -29,6 +32,9 @@ dependencies:
   framer-motion:
     specifier: ^11.0.5
     version: 11.0.5(react-dom@18.2.0)(react@18.2.0)
+  i:
+    specifier: ^0.3.7
+    version: 0.3.7
   next:
     specifier: 14.1.0
     version: 14.1.0(@babel/core@7.23.9)(react-dom@18.2.0)(react@18.2.0)
@@ -1790,6 +1796,22 @@ packages:
   /@ungap/structured-clone@1.2.0:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
 
+  /@vercel/analytics@1.2.2(next@14.1.0)(react@18.2.0):
+    resolution: {integrity: sha512-X0rctVWkQV1e5Y300ehVNqpOfSOufo7ieA5PIdna8yX/U7Vjz0GFsGf4qvAhxV02uQ2CVt7GYcrFfddXXK2Y4A==}
+    peerDependencies:
+      next: '>= 13'
+      react: ^18 || ^19
+    peerDependenciesMeta:
+      next:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      next: 14.1.0(@babel/core@7.23.9)(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      server-only: 0.0.1
+    dev: false
+
   /abbrev@1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
     requiresBuild: true
@@ -3296,6 +3318,11 @@ packages:
     resolution: {integrity: sha512-SejXzIpv9gOVdDWXd4suM1fdF1k2dxZGvuTdkOVLoazYfK7O4DykIQbdrvuyG+EaTNlXAGhMndtKrhykgbt0gg==}
     dev: false
 
+  /i@0.3.7:
+    resolution: {integrity: sha512-FYz4wlXgkQwIPqhzC5TdNMLSE5+GS1IIDJZY/1ZiEPCT2S3COUVZeT5OW4BmW4r5LHLQuOosSwsvnroG9GR59Q==}
+    engines: {node: '>=0.4'}
+    dev: false
+
   /ignore@5.3.1:
     resolution: {integrity: sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==}
     engines: {node: '>= 4'}
@@ -4432,6 +4459,10 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
+
+  /server-only@0.0.1:
+    resolution: {integrity: sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA==}
+    dev: false
 
   /set-blocking@2.0.0:
     resolution: {integrity: sha512-KiKBS8AnWGEyLzofFfmvKwpdPzqiy16LvQfK3yv/fVH7Bj13/wl3JSR1J+rfgRE9q7xUJK4qvgS8raSOeLUehw==}
