@@ -16,13 +16,7 @@ const Answers = ({ conversation }: { conversation: IConversation[] }) => {
       />
       {Array.isArray(conversation) &&
         conversation?.map((convo, index) => (
-          <div
-            key={index}
-            className={`${convo.role === "user" ? "user-msg" : "system-msg"}`}
-            dangerouslySetInnerHTML={{
-              __html: convo.content.replace(/\n/g, "<br />"),
-            }}
-          />
+          <AnswerCard key={index} convo={convo} />
         ))}
       <div ref={conversationEndRef} />
     </div>
@@ -30,3 +24,15 @@ const Answers = ({ conversation }: { conversation: IConversation[] }) => {
 };
 
 export default Answers;
+
+function AnswerCard({ convo, key }: { convo: IConversation; key: number }) {
+  return (
+    <div
+      key={key}
+      className={`${convo.role === "user" ? "user-msg" : "system-msg"}`}
+      dangerouslySetInnerHTML={{
+        __html: convo.content.replace(/\n/g, "<br />"),
+      }}
+    />
+  );
+}

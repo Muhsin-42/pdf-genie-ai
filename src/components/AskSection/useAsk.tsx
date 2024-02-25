@@ -19,7 +19,6 @@ const useAsk = ({ clientSessionId }: { clientSessionId: string }) => {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
-      console.log("data", data?.data);
       setConversation(data?.data?.conversationHistory);
     } catch (error) {
       toast.error("Something went wrong! Try again!");
@@ -56,7 +55,6 @@ const useAsk = ({ clientSessionId }: { clientSessionId: string }) => {
         if (done) break;
 
         const decodedChunk = decoder.decode(value);
-        console.log(decodedChunk);
         accumulatedChunks += decodedChunk; // Accumulate chunks
         setConversation((prev) => {
           const updatedConversation = [...prev];
@@ -68,7 +66,6 @@ const useAsk = ({ clientSessionId }: { clientSessionId: string }) => {
         });
       }
 
-      console.log("Prompt sent successfully");
       setPrompt("");
       setLoading(false);
     } catch (error) {
