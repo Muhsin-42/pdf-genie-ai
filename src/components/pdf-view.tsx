@@ -4,13 +4,12 @@ import axios from "@/utils/axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-function PdfView({ clientSessinId }: { clientSessinId: string }) {
+function PdfView({ clientSessionId }: { clientSessionId: string }) {
   const [pdfUrl, setPdfUrl] = useState("");
   const router = useRouter();
-  console.log("clientSiesss ", clientSessinId);
   const getPdfUrl = async () => {
     try {
-      const { data } = await axios.get(`/pdf/${clientSessinId}`, {
+      const { data } = await axios.get(`/pdf/${clientSessionId}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setPdfUrl(data?.data?.pdfUrl);

@@ -1,40 +1,16 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import useAsk from "./useAsk";
-import { INITIAL_MSG } from "@/utils/constants";
+import Answers from "./answers";
 
-const AskGpt = ({ clientSessinId }: { clientSessinId: string }) => {
+const AskGpt = ({ clientSessionId }: { clientSessionId: string }) => {
   const { conversation, handleAsk, prompt, setPrompt, loading } = useAsk({
-    clientSessinId,
+    clientSessionId,
   });
-  const conversationEndRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (conversationEndRef.current) {
-      conversationEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [conversation]);
   return (
     <section className="relative flex size-full flex-col gap-2 sm:w-6/12 ">
-      <div className="flex flex-col overflow-auto pb-32">
-        <div
-          className={"system-msg"}
-          dangerouslySetInnerHTML={{
-            __html: INITIAL_MSG.replace(/\n/g, "<br />"),
-          }}
-        />
-        {Array.isArray(conversation) &&
-          conversation?.map((convo, index) => (
-            <div
-              key={index}
-              className={`${convo.role === "user" ? "user-msg" : "system-msg"}`}
-              dangerouslySetInnerHTML={{
-                __html: convo.content.replace(/\n/g, "<br />"),
-              }}
-            />
-          ))}
-        <div ref={conversationEndRef} />
-      </div>
+      <Answers conversation={conversation} />
       <form
         className="fixed bottom-3 flex w-full gap-2  px-3"
         onSubmit={handleAsk}

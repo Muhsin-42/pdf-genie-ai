@@ -1,6 +1,7 @@
 import axios from "axios";
+import { BASE_URL } from "./constants";
 
 export default axios.create({
-  // baseURL: "http://localhost:8000",
-  baseURL: "https://muhsin-a-nissar.tech/",
+  baseURL: BASE_URL,
+  // baseURL: "https://muhsin-a-nissar.tech/",
 });
