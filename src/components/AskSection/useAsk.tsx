@@ -70,6 +70,7 @@ const useAsk = ({ clientSessionId }: { clientSessionId: string }) => {
       setLoading(false);
     } catch (error) {
       setLoading(false);
+      toast.error("Something went wrong! Try again!");
       console.log("error ", error);
     }
   };
