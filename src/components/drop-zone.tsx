@@ -63,11 +63,12 @@ const DropZoneComp = () => {
         <input {...getInputProps()} />
         {loading.state ? (
           <p className="flex items-center justify-center gap-3 text-center text-lg ">
-            {loading.msg} <BiLoaderCircle className={"animate-spin"} />
+            {loading.msg}{" "}
+            <BiLoaderCircle className={"animate-spin text-green-500"} />
           </p>
         ) : (
           <div className="flex flex-col items-center justify-center gap-3">
-            <FaInbox size={"3rem"} className="text-green-500" />
+            <FaInbox size={"3rem"} className="text-black/30" />
             <p className="text-center">Drop The Pdf Here, or click to select</p>
           </div>
         )}
