@@ -67,7 +67,7 @@ const DropZoneComp = () => {
           </p>
         ) : (
           <div className="flex flex-col items-center justify-center gap-3">
-            <FaInbox size={"3rem"} className="text-black/30" />
+            <FaInbox size={"3rem"} className="text-green-500" />
             <p className="text-center">Drop The Pdf Here, or click to select</p>
           </div>
         )}
