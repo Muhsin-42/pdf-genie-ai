@@ -25,10 +25,9 @@ const Answers = ({ conversation }: { conversation: IConversation[] }) => {
 
 export default Answers;
 
-function AnswerCard({ convo, key }: { convo: IConversation; key: number }) {
+function AnswerCard({ convo }: { convo: IConversation }) {
   return (
     <div
-      key={key}
       className={`${convo.role === "user" ? "user-msg" : "system-msg"}`}
       dangerouslySetInnerHTML={{
         __html: convo.content.replace(/\n/g, "<br />"),
