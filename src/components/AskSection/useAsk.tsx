@@ -31,6 +31,8 @@ const useAsk = ({ clientSessionId }: { clientSessionId: string }) => {
 
   const handleAsk = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (prompt.trim() === "" || !prompt)
+      return toast.warning("Type something to Ask.");
     setLoading(true);
     setConversation((prev) => [...prev, { role: "user", content: prompt }]);
     try {
