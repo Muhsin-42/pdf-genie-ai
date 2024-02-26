@@ -64,7 +64,7 @@ const DropZoneComp = () => {
         {loading.state ? (
           <p className="flex items-center justify-center gap-3 text-center text-lg ">
             {loading.msg}{" "}
-            <BiLoaderCircle className={"animate-spin text-green-500"} />
+            <BiLoaderCircle className={"animate-spin"} size={"1.5rem"} />
           </p>
         ) : (
           <div className="flex flex-col items-center justify-center gap-3">
