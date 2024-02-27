@@ -1,13 +1,12 @@
 "use client";
+import { validateFile } from "@/utils";
 import axios from "@/utils/axios";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { toast } from "sonner";
-import { BiLoaderCircle } from "react-icons/bi";
-import { FaInbox } from "react-icons/fa";
 
-const DropZoneComp = () => {
+const useDropZone = () => {
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
   const [loading, setLoading] = useState({ state: false, msg: "" });
   const router = useRouter();
@@ -26,12 +25,13 @@ const DropZoneComp = () => {
   ));
 
   const handleSubmit = async () => {
-    setLoading({ state: true, msg: "Processing" });
-    setTimeout(() => setLoading({ state: true, msg: "Analyzing" }), 1000);
     if (!acceptedFiles[0]) {
       toast.error("Please select a file.");
       return;
     }
+    if (!validateFile(acceptedFiles[0])) return;
+    setLoading({ state: true, msg: "Processing" });
+    setTimeout(() => setLoading({ state: true, msg: "Analyzing" }), 1000);
     const formData = new FormData();
     formData.append("pdf", acceptedFiles[0]);
     try {
@@ -52,32 +52,14 @@ const DropZoneComp = () => {
     }
   };
 
-  return (
-    <section className=" flex  flex-col items-end justify-end">
-      <div
-        {...getRootProps({
-          className:
-            "dropzone border-4 rounded-lg border-dashed border-black/30 py-12 cursor-move w-full",
-        })}
-      >
-        <input {...getInputProps()} />
-        {loading.state ? (
-          <p className="flex items-center justify-center gap-3 text-center text-lg ">
-            {loading.msg}{" "}
-            <BiLoaderCircle className={"animate-spin"} size={"1.5rem"} />
-          </p>
-        ) : (
-          <div className="flex flex-col items-center justify-center gap-3">
-            <FaInbox size={"3rem"} className="text-black/30" />
-            <p className="text-center">Drop The Pdf Here, or click to select</p>
-          </div>
-        )}
-      </div>
-      <aside>
-        <ul>{files}</ul>
-      </aside>
-    </section>
-  );
+  return {
+    handleSubmit,
+    files,
+    acceptedFiles,
+    getRootProps,
+    getInputProps,
+    loading,
+  };
 };
 
-export default DropZoneComp;
+export default useDropZone;
