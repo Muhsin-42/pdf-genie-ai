@@ -1,6 +1,6 @@
 import useSmoothScroll from "@/hooks/useSmoothScroll";
 import { INITIAL_MSG } from "@/utils/constants";
-import React from "react";
+import React, { Fragment } from "react";
 import { IConversation } from "@/Types";
 
 const Answers = ({ conversation }: { conversation: IConversation[] }) => {
@@ -16,7 +16,13 @@ const Answers = ({ conversation }: { conversation: IConversation[] }) => {
       />
       {Array.isArray(conversation) &&
         conversation?.map((convo, index) => (
-          <AnswerCard key={index} convo={convo} />
+          <>
+            {convo?.content !== "" ? (
+              <Fragment key={index}>
+                <AnswerCard convo={convo} />
+              </Fragment>
+            ) : null}
+          </>
         ))}
       <div ref={conversationEndRef} />
     </div>
