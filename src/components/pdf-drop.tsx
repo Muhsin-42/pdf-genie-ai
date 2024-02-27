@@ -1,5 +1,5 @@
 import React from "react";
-import DropZoneComp from "./drop-zone";
+import DropZoneComp from "./DropZone/drop-zone";
 
 const UploadForm = () => {
   return (
