@@ -25,12 +25,14 @@ function PdfView({ clientSessionId }: { clientSessionId: string }) {
 
   return (
     <section className="hidden w-6/12 sm:block">
-      <iframe
-        allowFullScreen
-        src={`https://docs.google.com/gview?url=${pdfUrl}&embedded=true`}
-        className="h-screen w-full"
-        loading="lazy"
-      ></iframe>
+      {pdfUrl?.trim() !== "" && (
+        <iframe
+          allowFullScreen
+          src={`https://docs.google.com/gview?url=${pdfUrl}&embedded=true`}
+          className="h-screen w-full"
+          loading="lazy"
+        ></iframe>
+      )}
     </section>
   );
 }
