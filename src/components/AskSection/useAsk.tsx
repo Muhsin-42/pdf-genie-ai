@@ -51,25 +51,35 @@ const useAsk = ({ clientSessionId }: { clientSessionId: string }) => {
 
       let accumulatedChunks = "";
       const conversationLength = conversation?.length + 1;
-      while (true) {
+      const delay = 150;
+
+      const processChunk = async () => {
         const chunk = await reader.read();
         const { done, value } = chunk;
-        if (done) break;
+        if (done) {
+          setPrompt("");
+          setLoading(false);
+          return;
+        }
 
         const decodedChunk = decoder.decode(value);
-        accumulatedChunks += decodedChunk; // Accumulate chunks
-        setConversation((prev) => {
-          const updatedConversation = [...prev];
-          updatedConversation[conversationLength] = {
-            role: "system",
-            content: accumulatedChunks,
-          };
-          return updatedConversation;
-        });
-      }
+        accumulatedChunks += decodedChunk;
 
-      setPrompt("");
-      setLoading(false);
+        setTimeout(() => {
+          setConversation((prev) => {
+            const updatedConversation = [...prev];
+            updatedConversation[conversationLength] = {
+              role: "system",
+              content: accumulatedChunks,
+            };
+            return updatedConversation;
+          });
+          if (!done) processChunk();
+        }, delay);
+      };
+
+      // Start processing the first chunk
+      processChunk();
     } catch (error) {
       setLoading(false);
       toast.error("Something went wrong! Try again!");

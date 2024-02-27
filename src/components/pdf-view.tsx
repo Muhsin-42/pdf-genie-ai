@@ -21,17 +21,21 @@ function PdfView({ clientSessionId }: { clientSessionId: string }) {
 
   useEffect(() => {
     getPdfUrl();
-  }, []);
+  }, [clientSessionId]);
 
   return (
-    <section className="hidden w-6/12 sm:block">
-      {pdfUrl?.trim() !== "" && (
+    <section className="hidden w-6/12 sm:block ">
+      {pdfUrl.trim() !== "" ? (
         <iframe
           allowFullScreen
           src={`https://docs.google.com/gview?url=${pdfUrl}&embedded=true`}
           className="h-screen w-full"
           loading="lazy"
         ></iframe>
+      ) : (
+        <div className="space-y-5 p-5 h-full">
+          <div className=" p-4 h-full w-full rounded-lg shadow-2xl bg-gradient-to-r from-slate-200 via-gray-300 to-gray-200 animate-pulse"></div>
+        </div>
       )}
     </section>
   );
